@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<style>
+
+.use{
+
+    height:400px;
+}
+
+.first{
+    float:left;
+    padding:10px;
+    border: 1px solid black;
+    height:100%;
+    width:30%;
+}
+
+
+
+.second{
+    float:left;
+    padding:10px;
+    border: 1px solid black;
+    width:70%;
+    height:100%;
+}
+
+.detail{
+    width:200px;
+    height:200px;
+
+    background:red;
+}
+
+.imgBackground{
+    height:100px;
+    background: #FFE4E1;
+}
+
+.textBackground{
+    height:50px;
+
+
+}
+
+.menu{
+    padding-top:10px;
+    height:70px;
+    background:linear-gradient(to bottom, white,#FFE4E1 ,#FFE4E1);
+}
+
+.item{
+    height:800px;
+
+}
+
+
+.itemBox{
+    width:250px;
+    height:300px;
+    border:1px solid black;
+}
+
+.textBackground{
+    background:#FFE4E1;
+}
+
+.btn{
+    background:#FFDAB9;
+    border:0px solid black;
+    color:black;
+}
+
+.btn-info2{
+     background:#DB7093;
+}
+
+.btn-info3{
+     background:#D8BFD8;
+}
+
+.btn-info4{
+     background:#FFC0CB;
+}
+
+.table{
+
+
+}
+
+
+</style>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div class = "menu">
+
+        <a class="btn btn-lg btn-info"  href="/items">마이페이지</a>&nbsp&nbsp&nbsp&nbsp
+        <a class="btn btn-lg btn-info" href="/members">회원 목록</a>&nbsp&nbsp&nbsp&nbsp
+        <a class="btn btn-lg btn-info2" href="/money">요금 충전</a>&nbsp&nbsp&nbsp&nbsp
+        <a class="btn btn-lg btn-info2" href="/items/new">상품 등록</a>&nbsp&nbsp&nbsp&nbsp
+        <a class="btn btn-lg btn-info3" href="/">장바구니</a>&nbsp&nbsp&nbsp&nbsp
+        <a class="btn btn-lg btn-info3" href="/orders">주문 내역</a>&nbsp&nbsp&nbsp&nbsp
+        <a class="btn btn-lg btn-info4" href="/">자유게시판</a>&nbsp&nbsp&nbsp&nbsp
+        <a class="btn btn-lg btn-info4" href="/">이벤트</a>&nbsp&nbsp&nbsp&nbsp
+    </div>
+
+    <div class = "imgBackground"></div>
+
+    <div class = "textBackground"></div>
+
+    <div class = "item">
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th style="border: 1px solid #FF7F50	;  background:#FFDAB9;">제목</th>
+                    <th style="border: 1px solid #FF7F50	;  background:#FFDAB9;">상품명</th>
+                    <th style="border: 1px solid #FF7F50	;  background:#FFDAB9;">가격</th>
+                    <th style="border: 1px solid #FF7F50	;  background:#FFDAB9;">재고수량</th>
+                    <th style="border: 1px solid #FF7F50	;  background:#FFDAB9;">종류</th>
+                    <th style="border: 1px solid #FF7F50	;  background:#FFDAB9;">판매자</th>
+                    <th style="border: 1px solid #FF7F50	;  background:#FFDAB9;"></th>
+                </tr>
+                </thead>
+
+                <tbody> <tr th:each="item : ${items}">
+
+                    <td style="border-left: 1px solid #FF9D6E	; border-bottom: 1px solid #FF9D6E	" th:text="${item.title}"></td>
+                    <td style="border: 1px solid #FF9D6E" th:text="${item.name}"></td>
+                    <td style="border: 1px solid #FF9D6E	" th:text="${item.price}"></td>
+                    <td style="border: 1px solid #FF9D6E	" th:text="${item.stockQuantity}"></td>
+                    <td style="border: 1px solid #FF9D6E	" th:text="${item.category}"></td>
+                    <td style="border: 1px solid #FF9D6E	" th:text="${item.member.user_id}"></td>
+                    <td style="border-right: 1px solid #FF9D6E	; border-bottom: 1px solid #FF9D6E	">
+                        <a href="#" th:href="@{/items/detail/{id}/edit (id=${item.id})}"
+                           class="btn btn-primary" role="button">자세히</a>
+                    </td>
+
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+
+
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container --></body>
+</html>

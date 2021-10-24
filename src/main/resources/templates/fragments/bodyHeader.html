@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+
+
+.empty{
+    height:50px;
+    width:100%;
+
+}
+
+.titleRework{
+
+}
+
+
+.firstHeader{
+    float:left;
+    padding:10px;
+    border: 1px solid black;
+
+    height:100%;
+    width:30%;
+}
+
+
+
+.secondHeader{
+    background:red;
+    float:left;
+    padding:10px;
+    border: 1px solid black;
+    width:70%;
+    height:100%;
+}
+
+.headerBtn{
+    color:red;
+}
+
+.back{
+     background:red;
+}
+
+.text-muted3{
+    font-color:red;
+}
+</style>
+
+
+</head>
+
+
+<div class="header" name = "title" th:fragment="bodyHeader">
+
+    <div class ="empty"></div>
+    <div class="titleRework">
+
+        <a href="/"><h3 class="text-muted3" style="text-align: center; font-size:100px; color:#D2691E;">중석 중고마켓</h3></a>
+
+        <div class="firstHeader" style="text-align:right; ">
+        <button class="btn btn-primary" onclick="location.href='/members/login'" th:if = "${login} == 'false'">로그인</button>&nbsp&nbsp&nbsp&nbsp
+        <button  class="btn btn-primary" onclick="location.href='/members/new'" th:if = "${login} == 'false'">회원가입</button>
+
+        </div>
+
+        <div class = "back" style="background:;">
+        <form th:action="@{/members/logout}" method="post" style="text-align:right">
+            <a style="color:black;" href="/" th:if = "${login} == 'true'" >[[${member.name}]]님 환영합니다.</a>&nbsp&nbsp&nbsp&nbsp
+            <button  class="btn btn-primary"  th:if = "${login} == 'true'" type="submit">로그아웃</button>
+        </form>
+        </div>
+
+        <input type="hidden" name="user" value="${member.id}">
+    </div>
+
+</div>
+
+<script>
+
+
+
+</script>
